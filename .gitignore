@@ -34,3 +34,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Context docs (local only)
+WEBSITE_SPEC.md
+DISTRIBUTION_AND_GROWTH.md
+UX_GUIDED_EXPERIENCE.md
