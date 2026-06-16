@@ -2,136 +2,226 @@
 
 import { motion, type Variants, type Easing } from "framer-motion";
 import Link from "next/link";
+import { Laptop, Monitor, ArrowRight, Mail, CheckCircle2, X } from "lucide-react";
 
 const ease: Easing = "easeOut";
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 30 },
   show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay: i * 0.1, ease },
+    transition: { duration: 0.65, delay: i * 0.12, ease },
   }),
 };
 
 export default function HeroSection() {
   return (
-    <section className="bg-[#1E1B4B] min-h-screen flex items-center pt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 w-full">
+    <section className="bg-[#1E1B4B] grain min-h-screen flex items-center pt-16 relative overflow-hidden">
+      {/* Background decorative orbs */}
+      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-[#F59E0B]/8 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-purple-600/10 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-[#1E1B4B]/50 blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left: copy */}
+          {/* Left column: copy */}
           <div>
-            <motion.h1
+            {/* Pill badge */}
+            <motion.div
               custom={0}
               variants={fadeUp}
               initial="hidden"
               animate="show"
-              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight"
             >
-              Send personalised emails to your whole list.{" "}
-              <span className="text-[#F59E0B]">No monthly fees.</span>
-            </motion.h1>
+              <span className="inline-flex items-center bg-[#F59E0B]/15 text-[#F59E0B] border border-[#F59E0B]/30 text-xs font-bold px-3 py-1.5 rounded-full">
+                ✦ Free desktop app · No subscription
+              </span>
+            </motion.div>
 
-            <motion.p
+            {/* H1 */}
+            <motion.h1
               custom={1}
               variants={fadeUp}
               initial="hidden"
               animate="show"
-              className="mt-6 text-lg text-white/70 leading-relaxed max-w-lg"
+              className="mt-6 font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl text-white leading-[1.05] tracking-tight text-balance"
+            >
+              Send personalised emails to your whole list.
+              <br />
+              <span className="text-[#F59E0B]">No monthly fees.</span>
+            </motion.h1>
+
+            {/* Subheadline */}
+            <motion.p
+              custom={2}
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              className="mt-6 text-lg text-white/65 leading-relaxed max-w-[440px]"
             >
               PostOwl.in sends from your Gmail, Outlook, or any email account.
               Pay nothing per email. Your contacts never leave your computer.
             </motion.p>
 
+            {/* Trust chips */}
             <motion.div
-              custom={2}
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              className="mt-8 flex flex-col sm:flex-row gap-4"
-            >
-              <Link
-                href="/api/download?platform=mac"
-                className="inline-flex items-center justify-center gap-2 bg-[#F59E0B] hover:bg-[#FBBF24] text-[#1E1B4B] font-bold px-8 py-4 rounded-xl text-base transition-colors shadow-lg shadow-amber-500/20"
-              >
-                🍎 Download for Mac →
-              </Link>
-              <Link
-                href="/api/download?platform=win"
-                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-xl text-base transition-colors border border-white/20"
-              >
-                🪟 Download for Windows
-              </Link>
-            </motion.div>
-
-            <motion.p
               custom={3}
               variants={fadeUp}
               initial="hidden"
               animate="show"
-              className="mt-4 text-white/40 text-sm"
+              className="mt-5 flex flex-wrap gap-4"
+            >
+              {[
+                "No sign-up",
+                "No credit card",
+                "Your data stays local",
+              ].map((label) => (
+                <span
+                  key={label}
+                  className="flex items-center gap-1.5 text-white/50 text-sm"
+                >
+                  <CheckCircle2 size={14} className="text-[#F59E0B]/70 shrink-0" />
+                  {label}
+                </span>
+              ))}
+            </motion.div>
+
+            {/* CTA buttons */}
+            <motion.div
+              custom={4}
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              className="mt-8 flex gap-4 flex-wrap"
+            >
+              <Link
+                href="/api/download?platform=mac"
+                className="inline-flex items-center justify-center gap-2 bg-[#F59E0B] hover:bg-[#FCD34D] text-[#1E1B4B] font-bold px-8 py-4 rounded-xl transition-all duration-200 shadow-lg shadow-amber-500/20"
+              >
+                <Laptop size={18} />
+                Download for Mac
+                <ArrowRight size={16} />
+              </Link>
+              <Link
+                href="/api/download?platform=win"
+                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 text-white font-semibold px-8 py-4 rounded-xl transition-all border border-white/20"
+              >
+                <Monitor size={18} />
+                Download for Windows
+              </Link>
+            </motion.div>
+
+            {/* Platform note */}
+            <motion.p
+              custom={5}
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              className="mt-4 text-white/30 text-xs"
             >
               macOS 12+ · Windows 10/11 · Free
             </motion.p>
           </div>
 
-          {/* Right: app screenshot placeholder */}
+          {/* Right column: animated app UI mockup */}
           <motion.div
-            custom={2}
+            custom={3}
             variants={fadeUp}
             initial="hidden"
             animate="show"
             className="relative"
           >
-            <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden shadow-2xl shadow-black/40 aspect-[16/10]">
-              <div className="p-4 border-b border-white/10 flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-400/60" />
-                <div className="w-3 h-3 rounded-full bg-yellow-400/60" />
-                <div className="w-3 h-3 rounded-full bg-green-400/60" />
-                <span className="ml-4 text-white/30 text-xs font-mono">
+            {/* Amber glow behind the card */}
+            <div className="absolute -inset-6 bg-[#F59E0B]/8 rounded-3xl blur-2xl -z-10" />
+
+            {/* Mock app window */}
+            <div className="bg-[#0F0D2E] border border-white/10 rounded-2xl overflow-hidden shadow-2xl shadow-black/50">
+              {/* Window chrome */}
+              <div className="p-3 border-b border-white/10 flex items-center gap-2">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-400/50" />
+                <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/50" />
+                <div className="w-2.5 h-2.5 rounded-full bg-green-400/50" />
+                <span className="ml-3 text-white/25 text-xs font-mono">
                   PostOwl.in — Bulk Send
                 </span>
               </div>
-              <div className="p-6 flex flex-col gap-3">
-                {/* Mock campaign UI */}
-                <div className="bg-white/5 rounded-lg p-3 flex items-center justify-between">
-                  <span className="text-white/60 text-sm">📨 Campaign: Interview Invites — Q2</span>
-                  <span className="text-green-400 text-xs font-mono">Sending…</span>
+
+              {/* Window body */}
+              <div className="p-5 space-y-3">
+                {/* Campaign header row */}
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <Mail size={14} className="text-[#F59E0B]" />
+                    <span className="text-white/80 text-sm">
+                      Interview Invites — Q2 2026
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                    <span className="text-green-400 text-xs">Sending</span>
+                  </div>
                 </div>
-                <div className="bg-white/5 rounded-lg p-3">
+
+                {/* Progress section */}
+                <div className="bg-white/5 rounded-xl p-3">
                   <div className="flex justify-between text-xs text-white/40 mb-2">
                     <span>Progress</span>
                     <span>142 / 300</span>
                   </div>
-                  <div className="h-2 bg-white/10 rounded-full">
-                    <div className="h-2 bg-[#F59E0B] rounded-full" style={{ width: "47%" }} />
+                  <div className="h-1.5 bg-white/10 rounded-full">
+                    <div
+                      className="h-1.5 bg-gradient-to-r from-[#F59E0B] to-[#FCD34D] rounded-full"
+                      style={{ width: "47%" }}
+                    />
                   </div>
                 </div>
-                <div className="grid grid-cols-3 gap-2 mt-1">
+
+                {/* Stats grid */}
+                <div className="grid grid-cols-3 gap-2">
                   {[
-                    { label: "Sent", val: "142", color: "text-green-400" },
+                    { label: "Sent", val: "142", color: "text-emerald-400" },
                     { label: "Failed", val: "2", color: "text-red-400" },
-                    { label: "Pending", val: "156", color: "text-white/50" },
+                    { label: "Pending", val: "156", color: "text-white/40" },
                   ].map((s) => (
-                    <div key={s.label} className="bg-white/5 rounded-lg p-3 text-center">
-                      <div className={`text-xl font-bold ${s.color}`}>{s.val}</div>
-                      <div className="text-white/40 text-xs mt-1">{s.label}</div>
+                    <div
+                      key={s.label}
+                      className="bg-white/5 rounded-xl p-3 text-center"
+                    >
+                      <div
+                        className={`text-xl font-bold font-mono ${s.color}`}
+                      >
+                        {s.val}
+                      </div>
+                      <div className="text-xs text-white/30 mt-0.5">
+                        {s.label}
+                      </div>
                     </div>
                   ))}
                 </div>
-                <div className="mt-2 space-y-1">
-                  {["sarah@acme.com", "james@corp.io", "priya@startup.in"].map((email, i) => (
-                    <div key={email} className="flex items-center gap-3 text-xs text-white/50 font-mono">
-                      <span className={i === 1 ? "text-red-400" : "text-green-400"}>
-                        {i === 1 ? "✗" : "✓"}
-                      </span>
-                      {email}
-                    </div>
-                  ))}
+
+                {/* Log entries */}
+                <div className="space-y-1 mt-1">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 size={12} className="text-emerald-400 shrink-0" />
+                    <span className="text-white/40 text-xs font-mono">
+                      sarah@acme.com
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <X size={12} className="text-red-400 shrink-0" />
+                    <span className="text-white/40 text-xs font-mono">
+                      james@old-domain.io
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 size={12} className="text-emerald-400 shrink-0" />
+                    <span className="text-white/40 text-xs font-mono">
+                      priya@startup.in
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-            {/* Glow */}
-            <div className="absolute -inset-4 bg-[#F59E0B]/10 rounded-3xl blur-2xl -z-10" />
           </motion.div>
         </div>
       </div>

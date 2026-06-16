@@ -1,7 +1,19 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants, type Easing } from "framer-motion";
 import { Check, X } from "lucide-react";
+
+const ease: Easing = "easeOut";
+
+const headerVariants: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease } },
+};
+
+const tableVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease, delay: 0.1 } },
+};
 
 const rows = [
   {
@@ -48,7 +60,7 @@ const rows = [
   },
   {
     feature: "Starter templates",
-    postowl: "10",
+    postowl: "10 included",
     gmass: "None",
     mailmeteor: "Limited",
     sendy: "None",
@@ -64,26 +76,44 @@ const rows = [
 
 const cols = [
   { key: "postowl", label: "PostOwl.in", highlight: true },
-  { key: "gmass", label: "GMass" },
-  { key: "mailmeteor", label: "Mailmeteor" },
-  { key: "sendy", label: "Sendy" },
+  { key: "gmass", label: "GMass", highlight: false },
+  { key: "mailmeteor", label: "Mailmeteor", highlight: false },
+  { key: "sendy", label: "Sendy", highlight: false },
 ];
 
-function Cell({ value, highlight }: { value: string | boolean; highlight?: boolean }) {
-  if (value === true)
+function Cell({
+  value,
+  highlight,
+}: {
+  value: string | boolean;
+  highlight?: boolean;
+}) {
+  if (value === true) {
     return (
-      <span className={`flex justify-center ${highlight ? "text-[#F59E0B]" : "text-green-600"}`}>
-        <Check size={18} strokeWidth={2.5} />
+      <span className="flex justify-center">
+        <Check
+          size={16}
+          strokeWidth={3}
+          className={highlight ? "text-[#F59E0B]" : "text-emerald-500"}
+        />
       </span>
     );
-  if (value === false)
+  }
+  if (value === false) {
     return (
-      <span className="flex justify-center text-gray-300">
-        <X size={18} strokeWidth={2} />
+      <span className="flex justify-center">
+        <X size={16} strokeWidth={2} className="text-gray-300" />
       </span>
     );
+  }
   return (
-    <span className={`${highlight ? "font-semibold text-[#1E1B4B]" : "text-gray-600"}`}>
+    <span
+      className={
+        highlight
+          ? "font-semibold text-[#1E1B4B]"
+          : "text-gray-500"
+      }
+    >
       {value}
     </span>
   );
@@ -91,45 +121,53 @@ function Cell({ value, highlight }: { value: string | boolean; highlight?: boole
 
 export default function ComparisonTable() {
   return (
-    <section className="bg-gray-50 py-20 lg:py-28">
+    <section className="bg-[#FAFAF8] py-20 lg:py-28">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={headerVariants}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#1E1B4B]">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-[#1E1B4B]">
             How we compare
           </h2>
           <p className="mt-4 text-gray-500 text-lg">
-            Against tools people actually switch from.
+            Against the tools people actually switch from.
           </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          variants={tableVariants}
           className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm bg-white"
         >
-          <table className="w-full text-sm">
+          <table className="w-full text-sm border-collapse">
             <thead>
-              <tr className="border-b border-gray-200">
-                <th className="text-left px-6 py-4 text-gray-500 font-medium w-48">Feature</th>
+              <tr className="border-b border-gray-200" style={{ background: "rgba(30, 27, 75, 0.03)" }}>
+                <th className="text-left px-6 py-4 text-gray-500 font-medium text-xs uppercase tracking-wider w-48">
+                  Feature
+                </th>
                 {cols.map((col) => (
                   <th
                     key={col.key}
-                    className={`px-6 py-4 text-center font-semibold ${
+                    className={`px-6 py-4 text-center font-bold text-sm ${
                       col.highlight
-                        ? "text-[#1E1B4B] bg-amber-50 border-x border-amber-100"
-                        : "text-gray-500"
+                        ? "text-[#1E1B4B] border-x border-[#F59E0B]/20"
+                        : "text-gray-400 font-medium"
                     }`}
+                    style={
+                      col.highlight
+                        ? { background: "rgba(245, 158, 11, 0.08)" }
+                        : undefined
+                    }
                   >
                     {col.highlight && (
-                      <span className="block text-[#F59E0B] text-xs font-bold uppercase tracking-wider mb-0.5">
-                        ← You are here
+                      <span className="block text-[#F59E0B] text-[10px] font-bold uppercase tracking-widest mb-1">
+                        Your choice
                       </span>
                     )}
                     {col.label}
@@ -142,16 +180,25 @@ export default function ComparisonTable() {
                 <tr
                   key={row.feature}
                   className={`border-b border-gray-100 last:border-0 ${
-                    i % 2 === 0 ? "" : "bg-gray-50/50"
+                    i % 2 !== 0 ? "bg-gray-50/40" : ""
                   }`}
                 >
-                  <td className="px-6 py-4 text-gray-700 font-medium">{row.feature}</td>
+                  <td className="px-6 py-4 text-gray-700 font-medium">
+                    {row.feature}
+                  </td>
                   {cols.map((col) => (
                     <td
                       key={col.key}
                       className={`px-6 py-4 text-center ${
-                        col.highlight ? "bg-amber-50/50 border-x border-amber-100" : ""
+                        col.highlight
+                          ? "border-x border-[#F59E0B]/15"
+                          : ""
                       }`}
+                      style={
+                        col.highlight
+                          ? { background: "rgba(245, 158, 11, 0.05)" }
+                          : undefined
+                      }
                     >
                       <Cell
                         value={row[col.key as keyof typeof row]}
@@ -166,7 +213,7 @@ export default function ComparisonTable() {
         </motion.div>
 
         <p className="mt-4 text-gray-400 text-xs text-center">
-          GMass and Mailmeteor work only inside Gmail. Sendy requires a server and AWS SES configuration.
+          GMass and Mailmeteor work only inside Gmail. Sendy requires a server and AWS SES setup.
         </p>
       </div>
     </section>

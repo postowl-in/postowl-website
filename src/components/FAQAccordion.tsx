@@ -1,8 +1,30 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { motion, AnimatePresence, type Variants, type Easing } from "framer-motion";
+import { Plus, Minus } from "lucide-react";
+
+const ease: Easing = "easeOut";
+
+const headerVariants: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease } },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease, delay: i * 0.04 },
+  }),
+};
+
+const answerVariants: Variants = {
+  hidden: { height: 0, opacity: 0 },
+  visible: { height: "auto", opacity: 1, transition: { duration: 0.25, ease } },
+  exit: { height: 0, opacity: 0, transition: { duration: 0.2, ease } },
+};
 
 const faqs = [
   {
@@ -46,55 +68,66 @@ export default function FAQAccordion() {
     <section className="bg-white py-20 lg:py-28">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={headerVariants}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#1E1B4B]">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-[#1E1B4B]">
             Frequently asked questions
           </h2>
         </motion.div>
 
-        <div className="space-y-3">
-          {faqs.map((faq, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.04 }}
-              className="border border-gray-200 rounded-xl overflow-hidden"
-            >
-              <button
-                onClick={() => setOpen(open === i ? null : i)}
-                className="w-full flex items-center justify-between px-6 py-5 text-left gap-4 hover:bg-gray-50 transition-colors"
+        <div className="space-y-2">
+          {faqs.map((faq, i) => {
+            const isOpen = open === i;
+            return (
+              <motion.div
+                key={i}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-20px" }}
+                variants={itemVariants}
+                className="border border-gray-200 rounded-2xl overflow-hidden"
               >
-                <span className="font-medium text-gray-900">{faq.q}</span>
-                <ChevronDown
-                  size={18}
-                  className={`text-gray-400 shrink-0 transition-transform duration-200 ${
-                    open === i ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-              <AnimatePresence initial={false}>
-                {open === i && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="overflow-hidden"
-                  >
-                    <p className="px-6 pb-5 text-gray-600 text-sm leading-relaxed">
-                      {faq.a}
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
+                <button
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  className="w-full flex items-center justify-between px-7 py-5 text-left hover:bg-[#FAFAF8] transition-colors gap-4"
+                  aria-expanded={isOpen}
+                >
+                  <span className="font-medium text-gray-900 text-[15px] leading-snug">
+                    {faq.q}
+                  </span>
+                  <span className="shrink-0">
+                    {isOpen ? (
+                      <Minus size={18} className="text-[#F59E0B]" />
+                    ) : (
+                      <Plus size={18} className="text-[#F59E0B]" />
+                    )}
+                  </span>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      key="answer"
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      variants={answerVariants}
+                      className="overflow-hidden"
+                    >
+                      <p className="px-7 pb-6 pt-1 text-gray-500 text-sm leading-relaxed">
+                        {faq.a}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

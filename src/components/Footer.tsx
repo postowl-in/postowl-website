@@ -1,40 +1,86 @@
 import Link from "next/link";
+import { GitFork, Mail, ArrowUpRight } from "lucide-react";
+
+const productLinks = [
+  { href: "/features", label: "Features" },
+  { href: "/#how-it-works", label: "How it works" },
+  { href: "/download", label: "Download" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/docs", label: "Docs" },
+];
+
+const legalLinks = [
+  { href: "/legal/terms", label: "Terms of Service" },
+  { href: "/legal/privacy", label: "Privacy Policy" },
+  { href: "/legal/anti-spam", label: "Anti-Spam Policy" },
+];
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-950 text-white pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-          {/* Brand */}
+    <footer className="bg-[#0F0D2E] text-white">
+      {/* Amber gradient rule */}
+      <div className="h-px bg-gradient-to-r from-transparent via-[#F59E0B]/40 to-transparent" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+        {/* Main grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
+          {/* Brand column */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <span className="text-2xl">🦉</span>
-              <span className="font-bold text-xl">
-                PostOwl<span className="text-[#F59E0B]">.in</span>
+            <Link href="/" className="inline-flex items-center gap-2 mb-5 group">
+              <span className="text-2xl select-none">🦉</span>
+              <span className="font-display font-bold text-xl text-white tracking-tight">
+                PostOwl
+                <span className="text-[#F59E0B]">.in</span>
               </span>
             </Link>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Send personalised bulk email from your own Gmail, Outlook, or any
-              email account. Free desktop app for Mac and Windows.
+
+            <p className="text-[#F59E0B] font-display font-semibold text-lg mb-3 leading-snug">
+              Post it in.
             </p>
-            <p className="text-gray-500 text-sm mt-4">by Rohit Agarwal</p>
+
+            <p className="text-gray-400 text-sm leading-relaxed mb-5">
+              Send personalised bulk email from your own Gmail, Outlook, or any
+              email account. Free desktop app for Mac and Windows — no monthly
+              fees, no sending limits.
+            </p>
+
+            <p className="text-gray-500 text-xs mb-5">
+              by Rohit Agarwal
+            </p>
+
+            {/* Social / contact icons */}
+            <div className="flex items-center gap-3">
+              <a
+                href="https://github.com/rohitagr0310/email-app"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub repository"
+                className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-gray-400 hover:text-white transition-all duration-200"
+              >
+                <GitFork size={16} />
+              </a>
+              <a
+                href="mailto:hello@postowl.in"
+                aria-label="Send us an email"
+                className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-gray-400 hover:text-white transition-all duration-200"
+              >
+                <Mail size={16} />
+              </a>
+            </div>
           </div>
 
-          {/* Product */}
+          {/* Product column */}
           <div>
-            <h3 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider">
+            <h3 className="text-[#F59E0B] text-xs font-bold uppercase tracking-widest mb-5">
               Product
             </h3>
             <ul className="space-y-3">
-              {[
-                { href: "/features", label: "Features" },
-                { href: "/#how-it-works", label: "How it works" },
-                { href: "/download", label: "Download" },
-                { href: "/pricing", label: "Pricing" },
-                { href: "/docs", label: "Docs" },
-              ].map((l) => (
+              {productLinks.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-gray-400 hover:text-white text-sm transition-colors">
+                  <Link
+                    href={l.href}
+                    className="text-gray-400 hover:text-white text-sm transition-colors duration-200"
+                  >
                     {l.label}
                   </Link>
                 </li>
@@ -42,19 +88,18 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Legal */}
+          {/* Legal column */}
           <div>
-            <h3 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider">
+            <h3 className="text-[#F59E0B] text-xs font-bold uppercase tracking-widest mb-5">
               Legal
             </h3>
             <ul className="space-y-3">
-              {[
-                { href: "/legal/terms", label: "Terms of Service" },
-                { href: "/legal/privacy", label: "Privacy Policy" },
-                { href: "/legal/anti-spam", label: "Anti-Spam Policy" },
-              ].map((l) => (
+              {legalLinks.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-gray-400 hover:text-white text-sm transition-colors">
+                  <Link
+                    href={l.href}
+                    className="text-gray-400 hover:text-white text-sm transition-colors duration-200"
+                  >
                     {l.label}
                   </Link>
                 </li>
@@ -62,9 +107,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Connect */}
+          {/* Connect column */}
           <div>
-            <h3 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider">
+            <h3 className="text-[#F59E0B] text-xs font-bold uppercase tracking-widest mb-5">
               Connect
             </h3>
             <ul className="space-y-3">
@@ -73,25 +118,37 @@ export default function Footer() {
                   href="https://github.com/rohitagr0310/email-app"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white text-sm transition-colors"
+                  className="inline-flex items-center gap-1.5 text-gray-400 hover:text-white text-sm transition-colors duration-200 group/link"
                 >
+                  <GitFork size={14} className="shrink-0" />
                   GitHub
+                  <ArrowUpRight
+                    size={12}
+                    className="shrink-0 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover/link:opacity-100 transition-all duration-200"
+                  />
                 </a>
               </li>
               <li>
                 <a
                   href="mailto:hello@postowl.in"
-                  className="text-gray-400 hover:text-white text-sm transition-colors"
+                  className="inline-flex items-center gap-1.5 text-gray-400 hover:text-white text-sm transition-colors duration-200"
                 >
-                  Contact
+                  <Mail size={14} className="shrink-0" />
+                  hello@postowl.in
                 </a>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
-          © 2026 Rohit Agarwal. All rights reserved.
+        {/* Bottom bar */}
+        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+          <p className="text-gray-500 text-sm">
+            &copy; 2026 Rohit Agarwal. All rights reserved.
+          </p>
+          <p className="text-gray-600 text-xs">
+            Made with ♥ for HR teams everywhere
+          </p>
         </div>
       </div>
     </footer>
