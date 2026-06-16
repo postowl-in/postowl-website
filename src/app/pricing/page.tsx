@@ -22,6 +22,34 @@ export const metadata: Metadata = {
   },
 };
 
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "PostOwl.in",
+  "description": "Free desktop app to send personalised bulk email from Gmail, Outlook, or any email account. No subscription, no per-email fees.",
+  "brand": { "@type": "Brand", "name": "PostOwl.in" },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "seller": { "@type": "Person", "name": "Rohit Agarwal" },
+    "url": "https://postowl.in/download"
+  },
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "macOS 12+, Windows 10/11",
+  "featureList": "Unlimited campaigns, Unlimited contacts, Multiple email accounts, Personalisation fields, 10 starter templates, Full campaign logs and retry, Local data storage"
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://postowl.in" },
+    { "@type": "ListItem", "position": 2, "name": "Pricing", "item": "https://postowl.in/pricing" }
+  ]
+};
+
 const included = [
   "Unlimited campaigns",
   "Unlimited contacts",
@@ -35,6 +63,14 @@ const included = [
 export default function PricingPage() {
   return (
     <div className="min-h-screen bg-gray-50 pt-24 pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14">

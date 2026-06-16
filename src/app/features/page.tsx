@@ -22,6 +22,30 @@ export const metadata: Metadata = {
   },
 };
 
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "PostOwl.in Features",
+  "description": "Complete feature list for PostOwl.in personalised bulk email desktop app",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Send to a list in minutes", "description": "Upload a CSV from Excel or Google Sheets, or pick a saved group of contacts. PostOwl detects columns automatically." },
+    { "@type": "ListItem", "position": 2, "name": "Personalise every email automatically", "description": "Use {{first_name}}, {{company}}, or any column. Each recipient gets their own personalised version." },
+    { "@type": "ListItem", "position": 3, "name": "10 starter templates included", "description": "Hiring, sales, events, marketing templates included. Edit any and save as your own." },
+    { "@type": "ListItem", "position": 4, "name": "Contacts and groups", "description": "Import from any CSV. Organise into groups. Send to a group in one click." },
+    { "@type": "ListItem", "position": 5, "name": "Track every send and retry failures", "description": "Per-recipient status, plain-English errors, one-click retry." },
+    { "@type": "ListItem", "position": 6, "name": "Data never leaves your computer", "description": "No cloud sync, no account required. All data stored locally, encrypted." }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://postowl.in" },
+    { "@type": "ListItem", "position": 2, "name": "Features", "item": "https://postowl.in/features" }
+  ]
+};
+
 const features = [
   {
     id: "send-to-list",
@@ -212,6 +236,14 @@ const features = [
 export default function FeaturesPage() {
   return (
     <div className="min-h-screen bg-white pt-24 pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-20">
