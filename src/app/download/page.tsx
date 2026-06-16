@@ -4,6 +4,15 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://postowl.in" },
+    { "@type": "ListItem", "position": 2, "name": "Download PostOwl.in", "item": "https://postowl.in/download" },
+  ],
+};
+
 const macSteps = [
   "Open PostOwl.dmg",
   "Drag PostOwl.in to your Applications folder",
@@ -45,6 +54,10 @@ export default function DownloadPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 pt-24 pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div

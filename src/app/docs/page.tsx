@@ -21,6 +21,25 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://postowl.in" },
+    { "@type": "ListItem", "position": 2, "name": "Documentation", "item": "https://postowl.in/docs" },
+  ],
+};
+
+const techArticleSchema = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "PostOwl.in Documentation",
+  "description": "Complete documentation for PostOwl.in — email account setup, contacts, bulk send, personalisation, templates, campaign logs, and keyboard shortcuts.",
+  "author": { "@type": "Person", "name": "Rohit Agarwal" },
+  "publisher": { "@type": "Person", "name": "Rohit Agarwal" },
+  "url": "https://postowl.in/docs",
+};
+
 const sections = [
   {
     title: "Getting Started",
@@ -76,6 +95,14 @@ const emailProviders = [
 export default function DocsPage() {
   return (
     <div className="min-h-screen bg-white pt-24 pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(techArticleSchema) }}
+      />
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
           <h1 className="text-4xl font-extrabold text-[#1E1B4B] mb-4">Documentation</h1>

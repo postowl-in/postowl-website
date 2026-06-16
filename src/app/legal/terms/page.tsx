@@ -14,9 +14,23 @@ export const metadata: Metadata = {
   robots: { index: true, follow: false },
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://postowl.in" },
+    { "@type": "ListItem", "position": 2, "name": "Legal", "item": "https://postowl.in/legal/terms" },
+    { "@type": "ListItem", "position": 3, "name": "Terms of Service", "item": "https://postowl.in/legal/terms" },
+  ],
+};
+
 export default function TermsPage() {
   return (
     <div className="min-h-screen bg-white pt-24 pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-extrabold text-[#1E1B4B] mb-2">Terms of Service</h1>
         <p className="text-gray-400 text-sm mb-10">Last updated: 1 January 2026</p>
