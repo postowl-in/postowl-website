@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -10,10 +11,18 @@ const geistSans = localFont({
   variable: "--font-geist-sans",
   weight: "100 900",
 });
+
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
+});
+
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -40,25 +49,58 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "PostOwl.in",
-  applicationCategory: "BusinessApplication",
-  operatingSystem: "macOS, Windows",
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "USD",
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "PostOwl.in",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "macOS 12+, Windows 10/11",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+    },
+    downloadUrl: "https://postowl.in/download",
+    description:
+      "Send personalised emails to your whole list from Gmail, Outlook, or any email account. Free desktop app for Mac and Windows. No subscription.",
+    featureList: [
+      "Mail merge personalisation",
+      "CSV contact import",
+      "10 starter templates",
+      "Campaign tracking and retry",
+      "Multiple email accounts",
+      "Local data storage — no cloud",
+    ],
+    url: "https://postowl.in",
+    author: {
+      "@type": "Person",
+      name: "Rohit Agarwal",
+    },
   },
-  description:
-    "Send personalised emails to your whole list from Gmail, Outlook, or any email account. Free desktop app for Mac and Windows.",
-  url: "https://postowl.in",
-  author: {
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    url: "https://postowl.in",
+    name: "PostOwl.in",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://postowl.in/docs?q={search_term_string}",
+      },
+      "query-input": "required name=search_term_string",
+    },
+  },
+  {
+    "@context": "https://schema.org",
     "@type": "Person",
     name: "Rohit Agarwal",
+    url: "https://postowl.in",
+    sameAs: ["https://github.com/rohitagr0310"],
   },
-};
+];
 
 export default function RootLayout({
   children,
@@ -73,7 +115,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${bricolage.variable} antialiased`}
+      >
         <Navbar />
         <main>{children}</main>
         <Footer />
