@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://postowl.in/sitemap.xml
