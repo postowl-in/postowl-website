@@ -1,101 +1,168 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import HeroSection from "@/components/HeroSection";
+import ProviderBar from "@/components/ProviderBar";
+import UseCaseStrip from "@/components/UseCaseStrip";
+import FeatureGrid from "@/components/FeatureGrid";
+import HowItWorks from "@/components/HowItWorks";
+import ComparisonTable from "@/components/ComparisonTable";
+import FAQAccordion from "@/components/FAQAccordion";
+import DownloadCTA from "@/components/DownloadCTA";
+
+export const metadata: Metadata = {
+  title: "PostOwl.in — Send personalised bulk email for free",
+  description:
+    "Send personalised emails to your whole list from Gmail, Outlook, or any email account. Free desktop app for Mac and Windows. No subscription.",
+  alternates: { canonical: "https://postowl.in" },
+  openGraph: {
+    title: "PostOwl.in — Send personalised bulk email for free",
+    description:
+      "Send personalised emails to your whole list from Gmail, Outlook, or any email account. Free desktop app for Mac and Windows. No subscription.",
+    url: "https://postowl.in",
+    siteName: "PostOwl.in",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PostOwl.in — Send personalised bulk email for free",
+    description:
+      "Free desktop app to send personalised bulk email from Gmail, Outlook, or any email account. No subscription.",
+    site: "@postowlin",
+    creator: "@postowlin",
+  },
+};
+
+const pageSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is PostOwl.in really free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Download it, connect your email account, and send. No sign-up, no subscription, no credit card.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "Which email accounts work with PostOwl.in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Gmail, Outlook / Microsoft 365, Zoho Mail, Yahoo Mail, AWS SES, Postmark, and any other service that supports standard email sending. If your company has a business email, it almost certainly works.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "Does my contact list ever leave my computer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Your contacts, templates, and campaign history are stored only on your computer. The only data that leaves your machine is the emails you choose to send — which go through your email provider, not through PostOwl's servers. PostOwl has no servers.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "What is the sending limit for PostOwl.in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PostOwl itself has no sending limit. Your email provider sets the limit. Free Gmail allows about 500 emails per day; Google Workspace allows 2,000 per day; AWS SES has no practical daily cap.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "Does PostOwl.in work on Windows?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. PostOwl.in supports macOS 12+ and Windows 10/11 (64-bit).",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if an email fails to send?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Failed emails appear in the campaign log with a plain-English explanation. You can retry any or all failures with one click.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use my company Outlook account with PostOwl.in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Enter your Microsoft 365 credentials in the setup wizard. If your IT admin has disabled SMTP AUTH for your account, ask them to enable it.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a mobile version of PostOwl.in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No — PostOwl.in is a desktop app for Mac and Windows. A browser-based version may come in the future.",
+        },
+      },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to send personalised bulk email with PostOwl.in",
+    "description":
+      "Send personalised bulk email to your whole list from your own Gmail, Outlook, or any email account — for free.",
+    "totalTime": "PT5M",
+    "supply": [
+      { "@type": "HowToSupply", "name": "PostOwl.in desktop app" },
+      { "@type": "HowToSupply", "name": "Gmail, Outlook, or any email account" },
+      { "@type": "HowToSupply", "name": "CSV file with contact list" },
+    ],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Connect your email account",
+        "text": "Download and open PostOwl.in. Pick Gmail, Outlook, Zoho, Yahoo, or any email provider. Credentials stay encrypted on your computer.",
+        "url": "https://postowl.in/docs#email-setup",
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Import your contact list",
+        "text": "Upload a spreadsheet (CSV from Excel or Google Sheets), or pick a saved group of contacts — no re-uploading needed.",
+        "url": "https://postowl.in/docs#contacts",
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Write your email with personalisation",
+        "text": "Use {{first_name}}, {{company}}, or any column from your list. PostOwl.in replaces each field with that person's data automatically.",
+        "url": "https://postowl.in/docs#bulk-send",
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Review and send",
+        "text": "Preview exactly how the first email looks before anything goes out. Watch sends happen live. Retry any failures instantly.",
+        "url": "https://postowl.in/docs#bulk-send",
+      },
+    ],
+  },
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchemas) }}
+      />
+      <HeroSection />
+      <ProviderBar />
+      <UseCaseStrip />
+      <FeatureGrid />
+      <HowItWorks />
+      <ComparisonTable />
+      <FAQAccordion />
+      <DownloadCTA location="footer" />
+    </>
   );
 }
