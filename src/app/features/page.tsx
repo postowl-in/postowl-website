@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Check } from "lucide-react";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Features — PostOwl.in",
