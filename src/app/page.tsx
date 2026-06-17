@@ -20,14 +20,6 @@ export const metadata: Metadata = {
     url: "https://postowl.in",
     siteName: "PostOwl.in",
     type: "website",
-    images: [
-      {
-        url: "https://postowl.in/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "PostOwl.in — Free bulk email desktop app",
-      },
-    ],
     locale: "en_US",
   },
   twitter: {
@@ -35,7 +27,6 @@ export const metadata: Metadata = {
     title: "PostOwl.in — Send personalised bulk email for free",
     description:
       "Free desktop app to send personalised bulk email from Gmail, Outlook, or any email account. No subscription.",
-    images: ["https://postowl.in/og-image.png"],
     site: "@postowlin",
     creator: "@postowlin",
   },
