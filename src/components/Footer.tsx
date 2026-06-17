@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { GitFork, Mail, ArrowUpRight } from "lucide-react";
+import { Mail } from "lucide-react";
 
 const productLinks = [
   { href: "/features", label: "Features" },
@@ -50,15 +50,6 @@ export default function Footer() {
 
             {/* Social / contact icons */}
             <div className="flex items-center gap-3">
-              <a
-                href="https://github.com/rohitagr0310/email-app"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub repository"
-                className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-gray-400 hover:text-white transition-all duration-200"
-              >
-                <GitFork size={16} />
-              </a>
               <a
                 href="mailto:hello@postowl.in"
                 aria-label="Send us an email"
@@ -113,21 +104,6 @@ export default function Footer() {
               Connect
             </h3>
             <ul className="space-y-3">
-              <li>
-                <a
-                  href="https://github.com/rohitagr0310/email-app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-gray-400 hover:text-white text-sm transition-colors duration-200 group/link"
-                >
-                  <GitFork size={14} className="shrink-0" />
-                  GitHub
-                  <ArrowUpRight
-                    size={12}
-                    className="shrink-0 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover/link:opacity-100 transition-all duration-200"
-                  />
-                </a>
-              </li>
               <li>
                 <a
                   href="mailto:hello@postowl.in"

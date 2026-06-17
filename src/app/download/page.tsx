@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { Laptop, Monitor, TriangleAlert, Info } from "lucide-react";
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -29,13 +30,6 @@ const winSteps = [
   "Send your first campaign",
 ];
 
-const sysReqs = [
-  { label: "OS version", mac: "macOS 12+", win: "Windows 10 64-bit" },
-  { label: "RAM", mac: "256 MB", win: "256 MB" },
-  { label: "Disk", mac: "150 MB", win: "150 MB" },
-  { label: "Internet", mac: "For sending only", win: "For sending only" },
-];
-
 export default function DownloadPage() {
   const [os, setOs] = useState<"mac" | "win" | null>(null);
   const [email, setEmail] = useState("");
@@ -53,7 +47,7 @@ export default function DownloadPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-24 pb-20">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-24 pb-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -65,10 +59,10 @@ export default function DownloadPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl font-bold text-[#1E1B4B]">
+          <h1 className="text-4xl font-bold text-[#1E1B4B] dark:text-white">
             Download PostOwl.in
           </h1>
-          <p className="mt-3 text-gray-500 text-lg">Version 1.0.0 · Free</p>
+          <p className="mt-3 text-gray-500 dark:text-gray-300 text-lg">Version 1.0.0 · Free</p>
         </motion.div>
 
         {/* Primary download card */}
@@ -76,19 +70,19 @@ export default function DownloadPage() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden mb-6"
+          className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden mb-6"
         >
           {/* Mac */}
           <div
             className={`p-8 ${
-              os === "mac" ? "bg-amber-50 border-b-2 border-[#F59E0B]" : "border-b border-gray-100"
+              os === "mac" ? "bg-amber-50 border-b-2 border-[#F59E0B]" : "border-b border-gray-100 dark:border-gray-700"
             }`}
           >
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-2xl">🍎</span>
-                  <span className="font-bold text-xl text-gray-900">
+                  <Laptop size={20} className="text-gray-700 dark:text-gray-300" />
+                  <span className="font-bold text-xl text-gray-900 dark:text-white">
                     Download for macOS
                   </span>
                   {os === "mac" && (
@@ -97,7 +91,7 @@ export default function DownloadPage() {
                     </span>
                   )}
                 </div>
-                <p className="text-gray-500 text-sm">
+                <p className="text-gray-500 dark:text-gray-300 text-sm">
                   macOS 12 Monterey or later · Apple Silicon + Intel
                 </p>
               </div>
@@ -119,8 +113,8 @@ export default function DownloadPage() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-2xl">🪟</span>
-                  <span className="font-bold text-xl text-gray-900">
+                  <Monitor size={20} className="text-gray-700 dark:text-gray-300" />
+                  <span className="font-bold text-xl text-gray-900 dark:text-white">
                     Download for Windows
                   </span>
                   {os === "win" && (
@@ -129,7 +123,7 @@ export default function DownloadPage() {
                     </span>
                   )}
                 </div>
-                <p className="text-gray-500 text-sm">Windows 10/11 (64-bit)</p>
+                <p className="text-gray-500 dark:text-gray-300 text-sm">Windows 10/11 (64-bit)</p>
               </div>
               <Link
                 href="/api/download?platform=win"
@@ -142,13 +136,13 @@ export default function DownloadPage() {
         </motion.div>
 
         {/* Meta links */}
-        <p className="text-center text-gray-400 text-sm mb-12">
+        <p className="text-center text-gray-400 dark:text-gray-300 text-sm mb-12">
           SHA-256 checksums · Release notes ·{" "}
           <a
             href="https://github.com/rohitagr0310/email-app/releases"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-gray-600 transition-colors underline"
+            className="hover:text-gray-600 dark:hover:text-white transition-colors underline"
           >
             All versions
           </a>
@@ -159,19 +153,19 @@ export default function DownloadPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-white rounded-2xl border border-gray-200 shadow-sm p-8 mb-6"
+          className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm p-8 mb-6"
         >
-          <h2 className="text-xl font-bold text-[#1E1B4B] mb-6">
+          <h2 className="text-xl font-bold text-[#1E1B4B] dark:text-white mb-6">
             What&apos;s next after downloading?
           </h2>
           <div className="grid sm:grid-cols-2 gap-8">
             <div>
-              <h3 className="font-semibold text-gray-700 mb-4 flex items-center gap-2">
-                <span>🍎</span> macOS
+              <h3 className="font-semibold text-gray-700 dark:text-gray-300 mb-4 flex items-center gap-2">
+                <Laptop size={18} /> macOS
               </h3>
               <ol className="space-y-2">
                 {macSteps.map((s, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm text-gray-600">
+                  <li key={i} className="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
                     <span className="w-5 h-5 rounded-full bg-[#1E1B4B] text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
                       {i + 1}
                     </span>
@@ -181,12 +175,12 @@ export default function DownloadPage() {
               </ol>
             </div>
             <div>
-              <h3 className="font-semibold text-gray-700 mb-4 flex items-center gap-2">
-                <span>🪟</span> Windows
+              <h3 className="font-semibold text-gray-700 dark:text-gray-300 mb-4 flex items-center gap-2">
+                <Monitor size={18} /> Windows
               </h3>
               <ol className="space-y-2">
                 {winSteps.map((s, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm text-gray-600">
+                  <li key={i} className="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
                     <span className="w-5 h-5 rounded-full bg-[#1E1B4B] text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
                       {i + 1}
                     </span>
@@ -198,56 +192,26 @@ export default function DownloadPage() {
           </div>
 
           {/* Security note */}
-          <div className="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-4">
-            <p className="text-sm text-amber-800 font-medium mb-1">
+          <div className="mt-8 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700/30 rounded-xl p-4">
+            <p className="text-sm text-amber-800 dark:text-amber-300 font-medium mb-1 flex items-center gap-1.5">
+              <TriangleAlert size={16} className="shrink-0" />
               macOS: Gatekeeper warning
             </p>
-            <p className="text-sm text-amber-700">
+            <p className="text-sm text-amber-700 dark:text-amber-300">
               If macOS says &quot;PostOwl.in cannot be opened because the developer cannot be verified&quot;,
               go to System Settings → Privacy &amp; Security → scroll down and click &quot;Open Anyway&quot;.
               This is normal for apps not yet in the Mac App Store.
             </p>
           </div>
-          <div className="mt-3 bg-blue-50 border border-blue-200 rounded-xl p-4">
-            <p className="text-sm text-blue-800 font-medium mb-1">
+          <div className="mt-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700/30 rounded-xl p-4">
+            <p className="text-sm text-blue-800 dark:text-blue-300 font-medium mb-1 flex items-center gap-1.5">
+              <Info size={16} className="shrink-0" />
               Windows: SmartScreen warning
             </p>
-            <p className="text-sm text-blue-700">
+            <p className="text-sm text-blue-700 dark:text-blue-300">
               If Windows SmartScreen shows a warning, click &quot;More info&quot; then &quot;Run anyway&quot;.
               This appears for newly published apps.
             </p>
-          </div>
-        </motion.div>
-
-        {/* System requirements */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="bg-white rounded-2xl border border-gray-200 shadow-sm p-8 mb-6"
-        >
-          <h2 className="text-xl font-bold text-[#1E1B4B] mb-6">
-            System requirements
-          </h2>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-gray-200">
-                  <th className="text-left py-3 text-gray-500 font-medium" />
-                  <th className="text-center py-3 text-gray-900 font-semibold">🍎 macOS</th>
-                  <th className="text-center py-3 text-gray-900 font-semibold">🪟 Windows</th>
-                </tr>
-              </thead>
-              <tbody>
-                {sysReqs.map((r) => (
-                  <tr key={r.label} className="border-b border-gray-100 last:border-0">
-                    <td className="py-3 text-gray-500">{r.label}</td>
-                    <td className="py-3 text-center text-gray-700">{r.mac}</td>
-                    <td className="py-3 text-center text-gray-700">{r.win}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
           </div>
         </motion.div>
 

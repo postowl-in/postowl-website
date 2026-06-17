@@ -22,6 +22,7 @@ export default function CookieConsentBanner() {
 
   function accept() {
     localStorage.setItem("cookie_consent", "accepted");
+    window.dispatchEvent(new Event("postowl:consent-accepted"));
     setVisible(false);
   }
 

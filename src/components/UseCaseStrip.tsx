@@ -67,10 +67,10 @@ const labelVariants: Variants = {
 
 export default function UseCaseStrip() {
   return (
-    <section className="bg-[#F4F3F0] py-16">
+    <section className="bg-[#F4F3F0] dark:bg-gray-800/40 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.p
-          className="text-center text-gray-400 text-xs font-bold uppercase tracking-[0.15em] mb-8"
+          className="text-center text-gray-400 dark:text-gray-500 text-xs font-bold uppercase tracking-[0.15em] mb-8"
           variants={labelVariants}
           initial="hidden"
           whileInView="visible"
@@ -92,7 +92,7 @@ export default function UseCaseStrip() {
               <motion.div
                 key={uc.title}
                 variants={cardVariants}
-                className="bg-white border border-gray-200 rounded-2xl p-6 hover:border-[#1E1B4B]/20 hover:shadow-lg transition-all duration-300 flex items-start gap-4"
+                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 hover:border-[#1E1B4B]/20 hover:shadow-lg transition-all duration-300 flex items-start gap-4"
               >
                 <div
                   className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${uc.bg}`}
@@ -100,10 +100,10 @@ export default function UseCaseStrip() {
                   <Icon size={22} className={uc.color} />
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-gray-900 text-lg leading-snug">
+                  <h3 className="font-display font-bold text-gray-900 dark:text-white text-lg leading-snug">
                     {uc.title}
                   </h3>
-                  <p className="text-gray-500 text-sm mt-1">{uc.description}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">{uc.description}</p>
                 </div>
               </motion.div>
             );

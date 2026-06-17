@@ -34,9 +34,9 @@ const pillVariants: Variants = {
 
 export default function ProviderBar() {
   return (
-    <section className="bg-[#FAFAF8] border-y border-gray-200/80 py-10">
+    <section className="bg-[#FAFAF8] dark:bg-gray-900 border-y border-gray-200/80 dark:border-gray-700/50 py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="text-center text-gray-400 text-xs font-bold uppercase tracking-[0.15em] mb-7">
+        <p className="text-center text-gray-400 dark:text-gray-500 text-xs font-bold uppercase tracking-[0.15em] mb-7">
           Works with your existing email account
         </p>
         <motion.div
@@ -52,8 +52,8 @@ export default function ProviderBar() {
               variants={pillVariants}
               className={
                 provider.distinguished
-                  ? "flex items-center gap-2 bg-[#1E1B4B]/5 border border-[#1E1B4B]/20 text-[#1E1B4B] font-semibold text-sm px-4 py-2.5 rounded-full shadow-sm hover:border-[#1E1B4B]/40 hover:shadow-md transition-all duration-200 cursor-default"
-                  : "flex items-center gap-2 bg-white border border-gray-200 text-gray-700 text-sm font-medium px-4 py-2.5 rounded-full shadow-sm hover:border-[#1E1B4B]/30 hover:shadow-md transition-all duration-200 cursor-default"
+                  ? "flex items-center gap-2 bg-[#1E1B4B]/5 dark:bg-[#1E1B4B]/20 border border-[#1E1B4B]/20 dark:border-[#1E1B4B]/40 text-[#1E1B4B] dark:text-indigo-300 font-semibold text-sm px-4 py-2.5 rounded-full shadow-sm hover:border-[#1E1B4B]/40 hover:shadow-md transition-all duration-200 cursor-default"
+                  : "flex items-center gap-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700/50 text-gray-700 dark:text-gray-200 text-sm font-medium px-4 py-2.5 rounded-full shadow-sm hover:border-[#1E1B4B]/30 hover:shadow-md transition-all duration-200 cursor-default"
               }
             >
               <Mail size={14} className="text-[#F59E0B] shrink-0" />

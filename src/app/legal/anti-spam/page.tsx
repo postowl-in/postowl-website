@@ -26,23 +26,23 @@ const breadcrumbSchema = {
 
 export default function AntiSpamPage() {
   return (
-    <div className="min-h-screen bg-white pt-24 pb-20">
+    <div className="min-h-screen bg-white dark:bg-gray-900 pt-24 pb-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-extrabold text-[#1E1B4B] mb-2">Anti-Spam Policy</h1>
-        <p className="text-gray-400 text-sm mb-10">Last updated: 1 January 2026</p>
+        <h1 className="text-4xl font-extrabold text-[#1E1B4B] dark:text-white mb-2">Anti-Spam Policy</h1>
+        <p className="text-gray-400 dark:text-gray-500 text-sm mb-10">Last updated: 1 January 2026</p>
 
-        <div className="prose prose-gray max-w-none text-gray-700 space-y-8">
+        <div className="prose prose-gray max-w-none text-gray-700 dark:text-gray-300 space-y-8">
           <section>
-            <h2 className="text-xl font-bold text-[#1E1B4B]">Our position on spam</h2>
+            <h2 className="text-xl font-bold text-[#1E1B4B] dark:text-white">Our position on spam</h2>
             <p>PostOwl.in is designed for legitimate bulk email — HR communications, event invitations, newsletters to opted-in audiences, and business outreach to people who have a reasonable expectation of hearing from you. We take a zero-tolerance approach to spam.</p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-[#1E1B4B]">What counts as spam?</h2>
+            <h2 className="text-xl font-bold text-[#1E1B4B] dark:text-white">What counts as spam?</h2>
             <p>Spam is unsolicited commercial email sent to recipients who have not given consent. Specific examples:</p>
             <ul className="list-disc pl-5 space-y-1 mt-2 text-sm">
               <li>Emailing purchased or scraped lists.</li>
@@ -53,7 +53,7 @@ export default function AntiSpamPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-[#1E1B4B]">Your responsibilities as a sender</h2>
+            <h2 className="text-xl font-bold text-[#1E1B4B] dark:text-white">Your responsibilities as a sender</h2>
             <p>When you use PostOwl.in, you are the sender — not us. You are responsible for:</p>
             <ul className="list-disc pl-5 space-y-1 mt-2 text-sm">
               <li>Only emailing people who have given you a legitimate reason to contact them.</li>
@@ -65,13 +65,13 @@ export default function AntiSpamPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-[#1E1B4B]">Technical note</h2>
+            <h2 className="text-xl font-bold text-[#1E1B4B] dark:text-white">Technical note</h2>
             <p>PostOwl.in sends emails through your own email account. Misuse may result in your email provider suspending your account. We are not liable for consequences arising from your violation of your email provider&apos;s terms or applicable anti-spam law.</p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-[#1E1B4B]">Report abuse</h2>
-            <p>If you believe PostOwl.in is being used to send you spam, contact us at <a href="mailto:hello@postowl.in" className="text-[#1E1B4B] underline">hello@postowl.in</a>. Include the full email headers so we can investigate.</p>
+            <h2 className="text-xl font-bold text-[#1E1B4B] dark:text-white">Report abuse</h2>
+            <p>If you believe PostOwl.in is being used to send you spam, contact us at <a href="mailto:hello@postowl.in" className="text-[#1E1B4B] dark:text-amber-400 underline">hello@postowl.in</a>. Include the full email headers so we can investigate.</p>
           </section>
         </div>
       </div>

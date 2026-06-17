@@ -5,6 +5,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CookieConsentBanner from "@/components/CookieConsentBanner";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import GoogleAnalyticsConsent from "@/components/GoogleAnalyticsConsent";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -108,7 +110,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -116,12 +118,15 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${bricolage.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${bricolage.variable} antialiased dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300`}
       >
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <CookieConsentBanner />
+        <ThemeProvider>
+          <GoogleAnalyticsConsent />
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+          <CookieConsentBanner />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -65,7 +65,7 @@ export default function FAQAccordion() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="bg-white py-20 lg:py-28">
+    <section className="bg-white dark:bg-gray-900 py-20 lg:py-28">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
@@ -74,7 +74,7 @@ export default function FAQAccordion() {
           variants={headerVariants}
           className="text-center mb-12"
         >
-          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-[#1E1B4B]">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-[#1E1B4B] dark:text-white">
             Frequently asked questions
           </h2>
         </motion.div>
@@ -90,14 +90,14 @@ export default function FAQAccordion() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-20px" }}
                 variants={itemVariants}
-                className="border border-gray-200 rounded-2xl overflow-hidden"
+                className="border border-gray-200 dark:border-gray-700/50 rounded-2xl overflow-hidden"
               >
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
-                  className="w-full flex items-center justify-between px-7 py-5 text-left hover:bg-[#FAFAF8] transition-colors gap-4"
+                  className="w-full flex items-center justify-between px-7 py-5 text-left hover:bg-[#FAFAF8] dark:hover:bg-gray-800/50 transition-colors gap-4"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-medium text-gray-900 text-[15px] leading-snug">
+                  <span className="font-medium text-gray-900 dark:text-white text-[15px] leading-snug">
                     {faq.q}
                   </span>
                   <span className="shrink-0">
@@ -119,7 +119,7 @@ export default function FAQAccordion() {
                       variants={answerVariants}
                       className="overflow-hidden"
                     >
-                      <p className="px-7 pb-6 pt-1 text-gray-500 text-sm leading-relaxed">
+                      <p className="px-7 pb-6 pt-1 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                         {faq.a}
                       </p>
                     </motion.div>

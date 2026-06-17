@@ -235,7 +235,7 @@ const features = [
 
 export default function FeaturesPage() {
   return (
-    <div className="min-h-screen bg-white pt-24 pb-20">
+    <div className="min-h-screen bg-white dark:bg-gray-900 pt-24 pb-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
@@ -247,10 +247,10 @@ export default function FeaturesPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-20">
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-[#1E1B4B]">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-[#1E1B4B] dark:text-white">
             Everything in PostOwl.in
           </h1>
-          <p className="mt-5 text-gray-500 text-xl max-w-2xl mx-auto">
+          <p className="mt-5 text-gray-500 dark:text-gray-400 text-xl max-w-2xl mx-auto">
             A complete email sending toolkit. Runs entirely on your computer.
           </p>
         </div>
@@ -266,12 +266,12 @@ export default function FeaturesPage() {
             >
               <div className={i % 2 === 1 ? "lg:order-2" : ""}>
                 <span className="text-4xl mb-4 block">{f.icon}</span>
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#1E1B4B] mb-6">
+                <h2 className="text-2xl sm:text-3xl font-bold text-[#1E1B4B] dark:text-white mb-6">
                   {f.title}
                 </h2>
                 <ul className="space-y-3">
                   {f.bullets.map((b, bi) => (
-                    <li key={bi} className="flex items-start gap-3 text-gray-600">
+                    <li key={bi} className="flex items-start gap-3 text-gray-600 dark:text-gray-300">
                       <Check
                         size={18}
                         className="text-[#F59E0B] mt-0.5 shrink-0"

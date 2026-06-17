@@ -18,20 +18,21 @@ export default function HeroSection() {
   return (
     <section className="bg-[#1E1B4B] grain min-h-screen flex items-center pt-16 relative overflow-hidden">
       {/* Background decorative orbs */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-[#F59E0B]/8 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-purple-600/10 blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-[#1E1B4B]/50 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-[#F59E0B]/8 blur-3xl pointer-events-none -z-10" />
+      <div className="absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-purple-600/10 blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-[#1E1B4B]/50 blur-3xl pointer-events-none -z-10" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 w-full">
+      <div className="grain-content relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left column: copy */}
-          <div>
+          <div className="text-center lg:text-left">
             {/* Pill badge */}
             <motion.div
               custom={0}
               variants={fadeUp}
               initial="hidden"
               animate="show"
+              className="w-fit mx-auto lg:mx-0"
             >
               <span className="inline-flex items-center bg-[#F59E0B]/15 text-[#F59E0B] border border-[#F59E0B]/30 text-xs font-bold px-3 py-1.5 rounded-full">
                 ✦ Free desktop app · No subscription
@@ -57,7 +58,7 @@ export default function HeroSection() {
               variants={fadeUp}
               initial="hidden"
               animate="show"
-              className="mt-6 text-lg text-white/65 leading-relaxed max-w-[440px]"
+              className="mt-6 text-lg text-white/65 leading-relaxed max-w-[440px] text-center lg:text-left mx-auto lg:mx-0"
             >
               PostOwl.in sends from your Gmail, Outlook, or any email account.
               Pay nothing per email. Your contacts never leave your computer.
@@ -69,7 +70,7 @@ export default function HeroSection() {
               variants={fadeUp}
               initial="hidden"
               animate="show"
-              className="mt-5 flex flex-wrap gap-4"
+              className="mt-5 flex flex-wrap gap-4 justify-center lg:justify-start"
             >
               {[
                 "No sign-up",
@@ -92,7 +93,7 @@ export default function HeroSection() {
               variants={fadeUp}
               initial="hidden"
               animate="show"
-              className="mt-8 flex gap-4 flex-wrap"
+              className="mt-8 flex gap-4 flex-wrap justify-center lg:justify-start"
             >
               <Link
                 href="/api/download?platform=mac"
@@ -117,7 +118,7 @@ export default function HeroSection() {
               variants={fadeUp}
               initial="hidden"
               animate="show"
-              className="mt-4 text-white/30 text-xs"
+              className="mt-4 text-white/30 text-xs text-center lg:text-left"
             >
               macOS 12+ · Windows 10/11 · Free
             </motion.p>
@@ -129,7 +130,7 @@ export default function HeroSection() {
             variants={fadeUp}
             initial="hidden"
             animate="show"
-            className="relative"
+            className="relative mt-10 lg:mt-0"
           >
             {/* Amber glow behind the card */}
             <div className="absolute -inset-6 bg-[#F59E0B]/8 rounded-3xl blur-2xl -z-10" />

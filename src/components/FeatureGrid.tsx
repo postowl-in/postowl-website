@@ -69,7 +69,7 @@ const features = [
 
 export default function FeatureGrid() {
   return (
-    <section className="bg-white py-20 lg:py-28">
+    <section className="bg-white dark:bg-gray-900 py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
@@ -81,7 +81,7 @@ export default function FeatureGrid() {
           <span className="inline-block text-[#F59E0B] text-xs font-bold uppercase tracking-widest mb-3">
             What you get
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-[#1E1B4B] leading-tight">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-[#1E1B4B] dark:text-white leading-tight">
             Everything you need to send at scale
           </h2>
         </motion.div>
@@ -99,19 +99,19 @@ export default function FeatureGrid() {
               <motion.div
                 key={feature.title}
                 variants={cardVariants}
-                className="bg-white border border-gray-100 rounded-2xl p-7 hover:border-[#1E1B4B]/20 hover:shadow-lg group cursor-default transition-all duration-300"
+                className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-800 rounded-2xl p-7 hover:border-[#1E1B4B]/20 hover:shadow-lg group cursor-default transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-xl bg-[#1E1B4B]/5 group-hover:bg-[#F59E0B]/10 flex items-center justify-center mb-5 transition-colors duration-300">
+                <div className="w-12 h-12 rounded-xl bg-[#1E1B4B]/5 dark:bg-[#1E1B4B]/20 group-hover:bg-[#F59E0B]/10 flex items-center justify-center mb-5 transition-colors duration-300">
                   <Icon
                     size={22}
-                    className="text-[#1E1B4B] group-hover:text-[#F59E0B] transition-colors duration-300"
+                    className="text-[#1E1B4B] dark:text-indigo-300 group-hover:text-[#F59E0B] transition-colors duration-300"
                     strokeWidth={1.75}
                   />
                 </div>
-                <h3 className="font-display font-bold text-gray-900 text-lg mb-2">
+                <h3 className="font-display font-bold text-gray-900 dark:text-white text-lg mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-gray-500 text-sm leading-relaxed">
+                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                   {feature.description}
                 </p>
               </motion.div>

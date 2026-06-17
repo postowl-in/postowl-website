@@ -12,6 +12,13 @@
   --foreground: #171717;
 }
 
+.dark {
+  --background: #0f0f0f;
+  --foreground: #f5f5f5;
+  --border: #2e2e2e;
+  --card: #1a1a1a;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -42,8 +49,8 @@ body {
   z-index: 0;
 }
 
-/* Ensure children of grain sections appear above the overlay */
-.grain > * {
+/* Utility class for content inside grain sections that needs to appear above the overlay */
+.grain-content {
   position: relative;
   z-index: 1;
 }

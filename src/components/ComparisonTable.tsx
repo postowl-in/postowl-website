@@ -102,7 +102,7 @@ function Cell({
   if (value === false) {
     return (
       <span className="flex justify-center">
-        <X size={16} strokeWidth={2} className="text-gray-300" />
+        <X size={16} strokeWidth={2} className="text-gray-300 dark:text-gray-600" />
       </span>
     );
   }
@@ -110,8 +110,8 @@ function Cell({
     <span
       className={
         highlight
-          ? "font-semibold text-[#1E1B4B]"
-          : "text-gray-500"
+          ? "font-semibold text-[#1E1B4B] dark:text-indigo-300"
+          : "text-gray-500 dark:text-gray-400"
       }
     >
       {value}
@@ -121,7 +121,7 @@ function Cell({
 
 export default function ComparisonTable() {
   return (
-    <section className="bg-[#FAFAF8] py-20 lg:py-28">
+    <section className="bg-[#FAFAF8] dark:bg-gray-900 py-20 lg:py-28">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
@@ -130,10 +130,10 @@ export default function ComparisonTable() {
           variants={headerVariants}
           className="text-center mb-12"
         >
-          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-[#1E1B4B]">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-[#1E1B4B] dark:text-white">
             How we compare
           </h2>
-          <p className="mt-4 text-gray-500 text-lg">
+          <p className="mt-4 text-gray-500 dark:text-gray-400 text-lg">
             Against the tools people actually switch from.
           </p>
         </motion.div>
@@ -143,12 +143,12 @@ export default function ComparisonTable() {
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
           variants={tableVariants}
-          className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm bg-white"
+          className="overflow-x-auto rounded-2xl border border-gray-200 dark:border-gray-700/50 shadow-sm bg-white dark:bg-gray-800"
         >
           <table className="w-full text-sm border-collapse">
             <thead>
-              <tr className="border-b border-gray-200" style={{ background: "rgba(30, 27, 75, 0.03)" }}>
-                <th className="text-left px-6 py-4 text-gray-500 font-medium text-xs uppercase tracking-wider w-48">
+              <tr className="border-b border-gray-200 dark:border-gray-700/50" style={{ background: "rgba(30, 27, 75, 0.03)" }}>
+                <th className="text-left px-6 py-4 text-gray-500 dark:text-gray-400 font-medium text-xs uppercase tracking-wider w-48">
                   Feature
                 </th>
                 {cols.map((col) => (
@@ -156,8 +156,8 @@ export default function ComparisonTable() {
                     key={col.key}
                     className={`px-6 py-4 text-center font-bold text-sm ${
                       col.highlight
-                        ? "text-[#1E1B4B] border-x border-[#F59E0B]/20"
-                        : "text-gray-400 font-medium"
+                        ? "text-[#1E1B4B] dark:text-indigo-300 border-x border-[#F59E0B]/20"
+                        : "text-gray-400 dark:text-gray-500 font-medium"
                     }`}
                     style={
                       col.highlight
@@ -179,11 +179,11 @@ export default function ComparisonTable() {
               {rows.map((row, i) => (
                 <tr
                   key={row.feature}
-                  className={`border-b border-gray-100 last:border-0 ${
-                    i % 2 !== 0 ? "bg-gray-50/40" : ""
+                  className={`border-b border-gray-100 dark:border-gray-800 last:border-0 ${
+                    i % 2 !== 0 ? "bg-gray-50/40 dark:bg-gray-800/40" : ""
                   }`}
                 >
-                  <td className="px-6 py-4 text-gray-700 font-medium">
+                  <td className="px-6 py-4 text-gray-700 dark:text-gray-200 font-medium">
                     {row.feature}
                   </td>
                   {cols.map((col) => (
@@ -212,7 +212,7 @@ export default function ComparisonTable() {
           </table>
         </motion.div>
 
-        <p className="mt-4 text-gray-400 text-xs text-center">
+        <p className="mt-4 text-gray-400 dark:text-gray-500 text-xs text-center">
           GMass and Mailmeteor work only inside Gmail. Sendy requires a server and AWS SES setup.
         </p>
       </div>
