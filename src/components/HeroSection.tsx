@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, type Variants, type Easing } from "framer-motion";
-import Link from "next/link";
 import { Laptop, Monitor, ArrowRight, Mail, CheckCircle2, X } from "lucide-react";
 
 const ease: Easing = "easeOut";

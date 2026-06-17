@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, type Variants, type Easing } from "framer-motion";
-import Link from "next/link";
 import { Laptop, Monitor, ArrowRight, Zap } from "lucide-react";
 
 interface Props {
