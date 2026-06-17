@@ -123,7 +123,7 @@ export default function Footer() {
             &copy; 2026 Rohit Agarwal. All rights reserved.
           </p>
           <p className="text-gray-600 text-xs">
-            Made with ♥ for HR teams everywhere
+            Made with ♥
           </p>
         </div>
       </div>
