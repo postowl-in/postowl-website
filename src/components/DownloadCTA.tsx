@@ -74,7 +74,7 @@ export default function DownloadCTA({ location = "footer" }: Props) {
             viewport={{ once: true }}
             className="mt-10 flex gap-4 flex-wrap justify-center"
           >
-            <Link
+            <a
               href="/api/download?platform=mac"
               data-analytics="download_mac_clicked"
               data-location={location}
@@ -83,8 +83,8 @@ export default function DownloadCTA({ location = "footer" }: Props) {
               <Laptop size={18} />
               Download for Mac
               <ArrowRight size={16} />
-            </Link>
-            <Link
+            </a>
+            <a
               href="/api/download?platform=win"
               data-analytics="download_windows_clicked"
               data-location={location}
@@ -92,7 +92,7 @@ export default function DownloadCTA({ location = "footer" }: Props) {
             >
               <Monitor size={18} />
               Download for Windows
-            </Link>
+            </a>
           </motion.div>
 
           {/* Small note */}

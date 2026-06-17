@@ -95,21 +95,21 @@ export default function HeroSection() {
               animate="show"
               className="mt-8 flex gap-4 flex-wrap justify-center lg:justify-start"
             >
-              <Link
+              <a
                 href="/api/download?platform=mac"
                 className="inline-flex items-center justify-center gap-2 bg-[#F59E0B] hover:bg-[#FCD34D] text-[#1E1B4B] font-bold px-8 py-4 rounded-xl transition-all duration-200 shadow-lg shadow-amber-500/20"
               >
                 <Laptop size={18} />
                 Download for Mac
                 <ArrowRight size={16} />
-              </Link>
-              <Link
+              </a>
+              <a
                 href="/api/download?platform=win"
                 className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 text-white font-semibold px-8 py-4 rounded-xl transition-all border border-white/20"
               >
                 <Monitor size={18} />
                 Download for Windows
-              </Link>
+              </a>
             </motion.div>
 
             {/* Platform note */}

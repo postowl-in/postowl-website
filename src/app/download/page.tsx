@@ -95,12 +95,12 @@ export default function DownloadPage() {
                   macOS 12 Monterey or later · Apple Silicon + Intel
                 </p>
               </div>
-              <Link
+              <a
                 href="/api/download?platform=mac"
                 className="shrink-0 bg-[#F59E0B] hover:bg-[#FBBF24] text-[#1E1B4B] font-bold px-6 py-3 rounded-xl text-sm transition-colors"
               >
                 Download .dmg
-              </Link>
+              </a>
             </div>
           </div>
 
@@ -125,12 +125,12 @@ export default function DownloadPage() {
                 </div>
                 <p className="text-gray-500 dark:text-gray-300 text-sm">Windows 10/11 (64-bit)</p>
               </div>
-              <Link
+              <a
                 href="/api/download?platform=win"
                 className="shrink-0 bg-white hover:bg-gray-50 text-gray-900 font-semibold px-6 py-3 rounded-xl text-sm transition-colors border border-gray-200"
               >
                 Download .exe
-              </Link>
+              </a>
             </div>
           </div>
         </motion.div>

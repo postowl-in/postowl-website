@@ -296,18 +296,18 @@ export default function FeaturesPage() {
             Download it free. No sign-up. No credit card.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
+            <a
               href="/api/download?platform=mac"
               className="bg-[#F59E0B] hover:bg-[#FBBF24] text-[#1E1B4B] font-bold px-8 py-4 rounded-xl text-base transition-colors"
             >
               🍎 Download for Mac →
-            </Link>
-            <Link
+            </a>
+            <a
               href="/api/download?platform=win"
               className="bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-xl text-base transition-colors border border-white/20"
             >
               🪟 Download for Windows
-            </Link>
+            </a>
           </div>
         </div>
       </div>
