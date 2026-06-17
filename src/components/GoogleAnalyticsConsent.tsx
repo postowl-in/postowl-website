@@ -31,19 +31,11 @@ function loadGoogleAnalytics() {
 
 export default function GoogleAnalyticsConsent() {
   useEffect(() => {
+    // Load GA unless user has explicitly declined
     const consent = localStorage.getItem("cookie_consent");
-    if (consent === "accepted") {
+    if (consent !== "declined") {
       loadGoogleAnalytics();
     }
-
-    const handleConsentAccepted = () => {
-      loadGoogleAnalytics();
-    };
-
-    window.addEventListener("postowl:consent-accepted", handleConsentAccepted);
-    return () => {
-      window.removeEventListener("postowl:consent-accepted", handleConsentAccepted);
-    };
   }, []);
 
   return null;

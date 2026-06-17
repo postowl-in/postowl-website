@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, type Variants, type Easing } from "framer-motion";
-import { X } from "lucide-react";
 
 const ease: Easing = "easeOut";
 
@@ -50,22 +49,15 @@ export default function CookieConsentBanner() {
               <div className="flex items-center gap-3 shrink-0">
                 <button
                   onClick={decline}
-                  className="text-white/50 hover:text-white/80 text-sm px-4 py-2 transition-colors duration-200"
+                  className="text-white/50 hover:text-white/80 text-sm px-4 py-2 transition-colors duration-200 border border-white/20 rounded-lg"
                 >
-                  Decline
+                  Reject analytics
                 </button>
                 <button
                   onClick={accept}
                   className="inline-flex items-center justify-center gap-2 bg-[#F59E0B] hover:bg-[#FCD34D] text-[#1E1B4B] font-bold text-sm px-5 py-2.5 rounded-xl transition-all duration-200 shadow-lg shadow-amber-500/20"
                 >
                   Accept
-                </button>
-                <button
-                  onClick={decline}
-                  aria-label="Dismiss"
-                  className="text-white/30 hover:text-white/60 transition-colors duration-200 p-1"
-                >
-                  <X size={16} />
                 </button>
               </div>
             </div>
