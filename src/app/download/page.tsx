@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { Laptop, Monitor, TriangleAlert, Info } from "lucide-react";
 
 const breadcrumbSchema = {
